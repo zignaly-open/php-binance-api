@@ -1,22 +1,22 @@
-[![Latest Version](https://img.shields.io/github/release/jaggedsoft/php-binance-api.svg?style=flat-square)](https://github.com/jaggedsoft/php-binance-api/releases) 
-[![GitHub last commit](https://img.shields.io/github/last-commit/jaggedsoft/php-binance-api.svg?style=flat-square)](#) 
-[![HitCount](http://hits.dwyl.io/jaggedsoft/php-binance-api.svg)](http://hits.dwyl.io/jaggedsoft/php-binance-api) 
-[![Packagist Downloads](https://img.shields.io/packagist/dt/jaggedsoft/php-binance-api.svg?style=flat-square)](https://packagist.org/packages/jaggedsoft/php-binance-api) 
+[![Latest Version](https://img.shields.io/github/release/zignaly-open/php-binance-api.svg?style=flat-square)](https://github.com/zignaly-open/php-binance-api/releases) 
+[![GitHub last commit](https://img.shields.io/github/last-commit/zignaly-open/php-binance-api.svg?style=flat-square)](#) 
+[![HitCount](http://hits.dwyl.io/zignaly-open/php-binance-api.svg)](http://hits.dwyl.io/zignaly-open/php-binance-api) 
+[![Packagist Downloads](https://img.shields.io/packagist/dt/zignaly-open/php-binance-api.svg?style=flat-square)](https://packagist.org/packages/zignaly-open/php-binance-api) 
 
 
-[![Build Status](https://travis-ci.org/jaggedsoft/php-binance-api.svg?branch=master&style=flat-square)](https://travis-ci.org/jaggedsoft/php-binance-api) 
-[![Coverage Status](https://coveralls.io/repos/github/jaggedsoft/php-binance-api/badge.svg?branch=master&style=flat-square)](https://coveralls.io/github/jaggedsoft/php-binance-api) 
-[![CodeCov](https://codecov.io/gh/jaggedsoft/php-binance-api/branch/master/graph/badge.svg?style=flat-square)](https://codecov.io/github/jaggedsoft/php-binance-api/) 
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/683459a5a71c4875956cf23078a0c39b)](https://www.codacy.com/app/dmzoneill/php-binance-api?utm_source=github.com&utm_medium=referral&utm_content=jaggedsoft/php-binance-api&utm_campaign=Badge_Coverage)
-[![Code consistency](https://squizlabs.github.io/PHP_CodeSniffer/analysis/jaggedsoft/php-binance-api/grade.svg?style=flat-square)](https://squizlabs.github.io/PHP_CodeSniffer/analysis/jaggedsoft/php-binance-api)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/683459a5a71c4875956cf23078a0c39b)](https://www.codacy.com/app/dmzoneill/php-binance-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jaggedsoft/php-binance-api&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/zignaly-open/php-binance-api.svg?branch=master&style=flat-square)](https://travis-ci.org/zignaly-open/php-binance-api) 
+[![Coverage Status](https://coveralls.io/repos/github/zignaly-open/php-binance-api/badge.svg?branch=master&style=flat-square)](https://coveralls.io/github/zignaly-open/php-binance-api) 
+[![CodeCov](https://codecov.io/gh/zignaly-open/php-binance-api/branch/master/graph/badge.svg?style=flat-square)](https://codecov.io/github/zignaly-open/php-binance-api/) 
+[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/683459a5a71c4875956cf23078a0c39b)](https://www.codacy.com/app/dmzoneill/php-binance-api?utm_source=github.com&utm_medium=referral&utm_content=zignaly-open/php-binance-api&utm_campaign=Badge_Coverage)
+[![Code consistency](https://squizlabs.github.io/PHP_CodeSniffer/analysis/zignaly-open/php-binance-api/grade.svg?style=flat-square)](https://squizlabs.github.io/PHP_CodeSniffer/analysis/zignaly-open/php-binance-api)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/683459a5a71c4875956cf23078a0c39b)](https://www.codacy.com/app/dmzoneill/php-binance-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=zignaly-open/php-binance-api&amp;utm_campaign=Badge_Grade)
 
 # PHP Binance API
 This project is designed to help you make your own projects that interact with the [Binance API](https://github.com/binance-exchange/binance-official-api-docs). You can stream candlestick chart data, market depth, or use other advanced features such as setting stop losses and iceberg orders. This project seeks to have complete API coverage including WebSockets.
 
 #### Installation
 ```
-composer require "jaggedsoft/php-binance-api @dev"
+composer require "zignaly-open/php-binance-api @dev"
 ```
 <details>
  <summary>Click for help with installation</summary>
@@ -31,16 +31,16 @@ php composer.phar install
 ```
 Composer not found? Use this command instead:
 ```
-php composer.phar require "jaggedsoft/php-binance-api @dev"
+php composer.phar require "zignaly-open/php-binance-api @dev"
 ```
 
 #### Windows:
-[Download installer for Windows](https://github.com/jaggedsoft/php-binance-api/#installing-on-windows)
+[Download installer for Windows](https://github.com/zignaly-open/php-binance-api/#installing-on-windows)
 
 </details>
 
 #### Getting started
-`composer require jaggedsoft/php-binance-api`
+`composer require zignaly-open/php-binance-api`
 ```php
 require 'vendor/autoload.php';
 // 1. config in home directory
@@ -52,7 +52,7 @@ $api = new Binance\API("<api key>","<secret>");
 // 4. Rate Limiting Support
 $api = new Binance\RateLimiter(new Binance\API());
 ```
-See [additional options](https://github.com/jaggedsoft/php-binance-api/#config-file-in-home-directory) for more options and help installing on Windows
+See [additional options](https://github.com/zignaly-open/php-binance-api/#config-file-in-home-directory) for more options and help installing on Windows
 
 #### Rate Limiting
 This Feature is in beta, you can start using rate limiting as a wrapper to the main API class.
@@ -1326,14 +1326,14 @@ Download and install composer:
 1. https://getcomposer.org/download/
 2. Create a folder on your drive like C:\Binance
 3. Run command prompt and type `cd C:\Binance`
-4. ```composer require jaggedsoft/php-binance-api```
+4. ```composer require zignaly-open/php-binance-api```
 5. Once complete copy the vendor folder into your project.
 
 #### Config file in home directory
 If you dont wish to store your API key and secret in your scripts, load it from your home directory
 ```bash
-mkdir -vp ~/.config/jaggedsoft/
-cat >  ~/.config/jaggedsoft/php-binance-api.json << EOF
+mkdir -vp ~/.config/zignaly-open/
+cat >  ~/.config/zignaly-open/php-binance-api.json << EOF
 {
     "api-key": "<api key>",
     "api-secret": "<secret>"
@@ -1343,8 +1343,8 @@ EOF
 
 #### Config file in home directory with curl options
 ```bash
-mkdir -vp ~/.config/jaggedsoft/
-cat >  ~/.config/jaggedsoft/php-binance-api.json << EOF
+mkdir -vp ~/.config/zignaly-open/
+cat >  ~/.config/zignaly-open/php-binance-api.json << EOF
 {
     "api-key": "<api key>",
     "api-secret": "<secret>",
@@ -1360,8 +1360,8 @@ EOF
 
 Optionally add proxy configuration
 ```bash
-mkdir -vp ~/.config/jaggedsoft/
-cat >  ~/.config/jaggedsoft/php-binance-api.json << EOF
+mkdir -vp ~/.config/zignaly-open/
+cat >  ~/.config/zignaly-open/php-binance-api.json << EOF
 {
     "api-key": "<api key>",
     "api-secret": "<secret>",
@@ -1392,7 +1392,7 @@ $api->getTransfered();
 
 ### Documentation
 > There are also numerous other formats available here:
-https://github.com/jaggedsoft/php-binance-api/tree/gh-pages
+https://github.com/zignaly-open/php-binance-api/tree/gh-pages
 
 
 > # ⚠️ Binance no longer offers support for API projects.
