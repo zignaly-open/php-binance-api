@@ -1187,7 +1187,7 @@ bid: 0.00022258
 ```
 </details>
 
-#### User Data: Account Balance Updates, Trade Updates, New Orders, Filled Orders, Cancelled Orders via WebSocket
+#### User Data: Account Balance Updates, Trade Updates, New Orders, Filled Orders, Cancelled Orders via WebSocket with keepAlive
 ```php
 $balance_update = function($api, $balances) {
 	print_r($balances);
@@ -1216,7 +1216,7 @@ $order_update = function($api, $report) {
 	//NEW, CANCELED, REPLACED, REJECTED, TRADE, EXPIRED
 	echo "{$symbol} {$side} {$executionType} {$orderType} ORDER #{$orderId}".PHP_EOL;
 };
-$api->userData($balance_update, $order_update);
+$api->userDataWithKeepAlive($balance_update, $order_update);
 ```
 
 <details>
