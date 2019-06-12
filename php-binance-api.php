@@ -2098,9 +2098,6 @@ class API
     public function userData(&$balance_callback, &$execution_callback = false)
     {
         $response = $this->httpRequest("v1/userDataStream", "POST", []);
-        if (!isset($response['listenKey']))
-            return $response;
-
         $this->listenKey = $response['listenKey'];
         $this->info['balanceCallback'] = $balance_callback;
         $this->info['executionCallback'] = $execution_callback;
@@ -2151,6 +2148,9 @@ class API
     public function userDataWithKeepAlive(&$balance_callback, &$execution_callback = false)
     {
         $response = $this->httpRequest("v1/userDataStream", "POST", []);
+        if (!isset($response['listenKey']))
+            return $response;
+
         $this->listenKey = $response['listenKey'];
         $this->subscriptions['@userdata'] = true;
         $this->info['balanceCallback'] = $balance_callback;
