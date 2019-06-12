@@ -2149,13 +2149,12 @@ class API
     {
         $response = $this->httpRequest("v1/userDataStream", "POST", []);
         $this->listenKey = $response['listenKey'];
-        print_r($response);
         $this->subscriptions['@userdata'] = true;
         $this->info['balanceCallback'] = $balance_callback;
         $this->info['executionCallback'] = $execution_callback;
 
         $loop = \React\EventLoop\Factory::create();
-        $loop->addPeriodicTimer(20, function () {
+        $loop->addPeriodicTimer(600, function () {
             $listenKey = $this->listenKey;
             $this->httpRequest("v1/userDataStream?listenKey={$listenKey}", "PUT", []);
         });
