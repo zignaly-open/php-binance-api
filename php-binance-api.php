@@ -2137,6 +2137,59 @@ class API
     }
 
     /**
+     * Version from https://github.com/jaggedsoft/php-binance-api/issues/178#issuecomment-409750124
+     * $api->userData($balance_update, $order_update);
+     *
+     * @param $balance_callback callable function
+     * @param bool $execution_callback callable function
+     * @return null
+     * @throws \Exception
+     */
+    public function userDataWithKeepAlive(&$balance_callback, &$execution_callback = false)
+    {
+        $loop = \React\EventLoop\Factory::create();
+        $loop->addPeriodicTimer(30, function () {
+            $listenKey = $this->listenKey;
+            $this->httpRequest("v1/userDataStream?listenKey={$listenKey}", "PUT", []);
+        });
+        $connector = new \Ratchet\Client\Connector($loop);
+
+        // @codeCoverageIgnoreStart
+        // phpunit can't cover async function
+        $connector($this->stream . $this->listenKey)->then(function ($ws) {
+            $ws->on('message', function ($data) use ($ws) {
+                if ($this->subscriptions['@userdata'] === false) {
+                    //$this->subscriptions[$endpoint] = null;
+                    $ws->close();
+                    return; //return $ws->close();
+                }
+                $json = json_decode($data);
+                $type = $json->e;
+                if ($type === "outboundAccountInfo") {
+                    $balances = $this->balanceHandler($json->B);
+                    $this->info['balanceCallback']($this, $balances);
+                } elseif ($type === "executionReport") {
+                    $report = $this->executionHandler($json);
+                    if ($this->info['executionCallback']) {
+                        $this->info['executionCallback']($this, $report);
+                    }
+                }
+            });
+            $ws->on('close', function ($code = null, $reason = null) {
+                // WPCS: XSS OK.
+                echo "userData: WebSocket Connection closed! ({$code} - {$reason})" . PHP_EOL;
+            });
+        }, function ($e) {
+            // WPCS: XSS OK.
+            echo "userData: Could not connect: {$e->getMessage()}" . PHP_EOL;
+        });
+
+        $loop->run();
+        // @codeCoverageIgnoreEnd
+    }
+
+
+    /**
      * miniTicker Get miniTicker for all symbols
      *
      * $api->miniTicker(function($api, $ticker) {
