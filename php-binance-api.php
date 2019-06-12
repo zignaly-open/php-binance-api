@@ -2147,8 +2147,15 @@ class API
      */
     public function userDataWithKeepAlive(&$balance_callback, &$execution_callback = false)
     {
+        $response = $this->httpRequest("v1/userDataStream", "POST", []);
+        $this->listenKey = $response['listenKey'];
+        print_r($response);
+        $this->subscriptions['@userdata'] = true;
+        $this->info['balanceCallback'] = $balance_callback;
+        $this->info['executionCallback'] = $execution_callback;
+
         $loop = \React\EventLoop\Factory::create();
-        $loop->addPeriodicTimer(30, function () {
+        $loop->addPeriodicTimer(20, function () {
             $listenKey = $this->listenKey;
             $this->httpRequest("v1/userDataStream?listenKey={$listenKey}", "PUT", []);
         });
@@ -2187,7 +2194,6 @@ class API
         $loop->run();
         // @codeCoverageIgnoreEnd
     }
-
 
     /**
      * miniTicker Get miniTicker for all symbols
