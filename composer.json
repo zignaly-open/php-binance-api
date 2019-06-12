@@ -1,7 +1,7 @@
 {
     "name": "zignaly-open/php-binance-api",
     "description": "PHP Binance API is an asynchronous PHP library for the Binance API designed to be easy to use.",
-    "keywords": ["Binance","cryptocurrency","WebSocket"],
+    "keywords": ["Binance","cryptocurrency","WebSocket", "Zignaly"],
     "license": "MIT",
     "repositories": [ {
             "type": "vcs",
